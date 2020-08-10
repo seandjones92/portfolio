@@ -1,7 +1,20 @@
 # My Portfolio site
 
-built with python, flask, and delivered as a stateless container
+Built with Python & Flask. Delivered as a stateless container
 
-## Goals
+## Running
 
-Site will have a web gui and a web API for getting hosting resume information
+Build the container with something like:
+
+```
+docker build -t localhost/portfolio:latest .
+```
+
+Run the resulting image like this:
+
+```
+docker run --rm -p 5000:5000 localhost/portfolio:latest
+```
+
+Access the site at [http://localhost:5000](http://localhost:5000)
+
