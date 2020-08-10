@@ -1,0 +1,93 @@
+{
+    "contact": {
+	"name": {
+	    "first": "Sean",
+	    "last": "Jones"
+	},
+        "location": "Denver, CO",
+	"email": "sean.d.jones92@gmail.com",
+        "github": "https://github.com/seandjones92",
+	"linkedin": "https://www.linkedin.com/in/seandylanjones/"
+    },
+    "tagline": "An IT professional and enthusiast with a passion for open source technology.",
+    "skills": [
+        "Comprehension of fundamental security principles",
+        "Effecient in system automation with Bash, Python, and Powershell",
+        "Familiarity with Ansible",
+        "Strong abilities in troubleshooting and root cause analysis",
+        "Works well in a goal oriented team environment"
+    ],
+    "langtools": [
+	"linux",
+	"python",
+	"docker"
+    ],
+    "experience": [
+        {
+            "title": "Sr. Technical Support Engineer - Cloud Management",
+            "company": "VMware",
+            "startDate": "July 2018",
+            "endDate": "PRESENT",
+            "moreInfo": [
+                "Worked in Lab team to plan, deploy, and manage long lived lab environments",
+                "Served as source of Docker, Kubernetes, and Helm knowledge within the team",
+                "Worked alongside VMware Projessional Services and SDK Support teams to debug and resolve issues in custom developed solutions"
+            ]
+        },
+        {
+            "title": "Technical Support Engineer - End User Computing",
+            "company": "VMware",
+            "startDate": "October 2016",
+            "endDate": "July 2018",
+            "moreInfo": [
+                "Global Technical Lead for Workspace ONE product",
+                "Built replica environments to triage production down scenarios in air-gapped environments",
+                "Worked as point of expertise for Microsoft PKI in context of Smart Card certificates"
+            ]
+        },
+        {
+            "title": "HPE - Linux Admin Consultant",
+            "company": "KForce",
+            "startDate": "June 2015",
+            "endDate": "October 2016",
+            "moreInfo": [
+                "Produced demo environments from daily software builds for use by pre-sales team",
+                "Utilized Ansible and Python to automate environment builds",
+                "Authored demo scripts and documentation to be used in sales and product demonstrations"
+            ]
+        },
+	{
+	    "title": "HP - NOC Support",
+	    "company": "KForce",
+	    "startDate": "March 2015",
+	    "endDate": "October 2015",
+	    "moreInfo": [
+		"Produced environment runbooks and documentation to expidite issue resolution",
+		"Served as training resource for new team members",
+		"Utilized Zabbix and OTRS to ensure maximum uptime of partner infrastructure"
+	    ]
+	}
+    ],
+    "projects": [
+        {
+            "name": "pyproject",
+            "description": "Creates Python CLI project skeletons ready to be shipped as container images",
+            "link": "https://github.com/seandjones92/pyproject"
+        },
+        {
+            "name": "k8s-todo",
+            "description": "A dummy project used to explore kubernetes concepts and stateless containers. API built with flask and psycopg2 used for PostgreSQL interaction",
+            "link": "https://github.com/seandjones92/k8s-todo"
+        },
+        {
+            "name": "teamstatus",
+            "description": " A slack bot that keeps track of who is available, on lunch, or on break for quick team availability reports",
+            "link": "https://github.com/seandjones92/teamstatus"
+        },
+        {
+            "name": "Dockerfiles",
+            "description": "I keep some applications dockerized for portability such as the Horizon View client, Ansible, Vagrant, and Azure Data Studio",
+            "link": "https://github.com/seandjones92/Dockerfiles"
+        }
+    ]
+}
