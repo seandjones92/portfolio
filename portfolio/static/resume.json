@@ -69,6 +69,11 @@
 	}
     ],
     "projects": [
+	{
+	    "name": "portfolio",
+	    "description": "The code base for this site, written in Flask",
+	    "link": "https://github.com/seandjones92/portfolio"
+	},
         {
             "name": "pyproject",
             "description": "Creates Python CLI project skeletons ready to be shipped as container images",
