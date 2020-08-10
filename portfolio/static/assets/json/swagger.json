@@ -34,8 +34,8 @@
 		"tags": [
 		    "Resume"
 		],
-		"summary": "resume",
-		"description": "get my resume in json format",
+		"summary": "Get my resume in json format",
+		"description": "Get my resume in json format",
 		"operationId": "resume",
 		"parameters": [],
 		"responses": {
@@ -52,8 +52,8 @@
 		"tags": [
 		    "Projects"
 		],
-		"summary": "mockme",
-		"description": "repeat the provided message in a mocking tone",
+		"summary": "Repeat the provided message in a mocking tone",
+		"description": "Repeat the provided message in a mocking tone",
 		"operationId": "mockme",
 		"parameters": [],
 		"requestBody": {
