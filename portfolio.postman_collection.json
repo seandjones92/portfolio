@@ -12,7 +12,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{hostname}}:{{port}}/api/healthcheck",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"healthcheck"
+					]
 				}
 			},
 			"response": []
@@ -23,7 +31,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{hostname}}:{{port}}/api/resume",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"resume"
+					]
 				},
 				"description": "get my resume in json format"
 			},
@@ -32,10 +48,28 @@
 		{
 			"name": "mockme",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"why are you doing this?\"\n}"
+				},
 				"url": {
-					"raw": ""
+					"raw": "{{hostname}}:{{port}}/api/mockme",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"mockme"
+					]
 				},
 				"description": "repeat the provided message in a mocking tone"
 			},

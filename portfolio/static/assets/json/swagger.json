@@ -1,127 +1,116 @@
 {
     "openapi": "3.0.0",
     "info": {
-	"description": "Created by Sean Jones",
-	"version": "1.0.0",
-	"title": "My APIs",
-	"contact": {
-	    "email": "sean.d.jones92@gmail.com"
-	},
-	"license": {
-	    "name": "MIT",
-	    "url": "https://opensource.org/licenses/MIT"
-	}
+	"title": "API Portfolio",
+	"description": "Sean Jones",
+	"contact": {},
+	"version": "1.0"
     },
     "servers": [
 	{
-	    "url": "/"
-	}
-    ],
-    "tags": [
-	{
-	    "name": "Resume",
-	    "description": "API for getting my resume"
+	    "url": "/api",
 	}
     ],
     "paths": {
-	"/api/resume": {
+	"/healthcheck": {
+	    "get": {
+		"tags": [
+		    "System"
+		],
+		"summary": "Check if the server is up",
+		"operationId": "healthcheck",
+		"parameters": [],
+		"responses": {
+		    "204": {
+			"description": "No content is returned",
+			"headers": {}
+		    }
+		},
+		"deprecated": false
+	    }
+	},
+	"/resume": {
 	    "get": {
 		"tags": [
 		    "Resume"
 		],
-		"summary": "Get my resume in json format",
+		"summary": "resume",
+		"description": "get my resume in json format",
+		"operationId": "resume",
+		"parameters": [],
 		"responses": {
 		    "200": {
-			"description": "OK",
-			"schema": {
-			    "$ref": "#/components/schemas/bookRequests"
-			}
+			"description": "",
+			"headers": {}
 		    }
-		}
-	    },
+		},
+		"deprecated": false
+	    }
+	},
+	"/mockme": {
 	    "post": {
 		"tags": [
-		    "Book Request"
+		    "Projects"
 		],
-		"summary": "Create a new book request system",
+		"summary": "mockme",
+		"description": "repeat the provided message in a mocking tone",
+		"operationId": "mockme",
+		"parameters": [],
 		"requestBody": {
-		    "description": "Book Request Post Object",
-		    "required": true,
+		    "description": "",
 		    "content": {
 			"application/json": {
 			    "schema": {
-				"$ref": "#/components/schemas/bookRequestPostBody"
+				"$ref": "#/components/schemas/mockmerequest"
+			    },
+			    "example": {
+				"message": "why are you doing this?"
 			    }
 			}
+		    },
+		    "required": true
+		},
+		"responses": {
+		    "200": {
+			"description": "",
+			"headers": {}
 		    }
 		},
-		"produces": [
-		    "application/json"
-		],
-		"responses": {
-		    "201": {
-			"description": "OK",
-			"schema": {
-			    "$ref": "#/components/schemas/id"
-			}
-		    },
-		    "400": {
-			"description": "Failed. Bad post data."
-		    }
-		}
+		"deprecated": false
 	    }
-	},
+	}
     },
     "components": {
 	"schemas": {
-	    "id": {
+	    "mockmerequest": {
+		"title": "mockmerequest",
+		"required": [
+		    "message"
+		],
+		"type": "object",
 		"properties": {
-		    "uuid": {
+		    "message": {
 			"type": "string"
 		    }
+		},
+		"example": {
+		    "message": "why are you doing this?"
 		}
-	    },
-	    "bookRequestPostBody": {
-		"type": "object",
-		"properties": {
-		    "title": {
-			"type": "string",
-			"format": "string"
-		    },
-		    "email": {
-			"type": "string",
-			"format": "email"
-		    }
-		}
-	    },
-	    "bookRequest": {
-		"type": "object",
-		"properties": {
-		    "title": {
-			"type": "string",
-			"format": "string"
-		    },
-		    "email": {
-			"type": "string",
-			"format": "email"
-		    },
-		    "timestamp": {
-			"type": "string",
-			"format": "number"
-		    }
-		}
-	    },
-	    "bookRequests": {
-		"type": "object",
-		"properties": {
-		    "bookRequest": {
-			"type": "object",
-			"additionalProperties": {
-			    "$ref": "#/components/schemas/bookRequest"
-			}
-		    }
-		}
-	    },
+	    }
 	}
-    }
+    },
+    "tags": [
+	{
+	    "name": "System",
+	    "description": ""
+	},
+	{
+	    "name": "Resume",
+	    "description": ""
+	},
+	{
+	    "name": "Projects",
+	    "description": ""
+	}
+    ]
 }
