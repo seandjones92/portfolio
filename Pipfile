@@ -14,6 +14,7 @@ flake8 = "*"
 flask = "*"
 requests = "*"
 gunicorn = "*"
+flask-swagger-ui = "*"
 
 [requires]
 python_version = "3.8"
