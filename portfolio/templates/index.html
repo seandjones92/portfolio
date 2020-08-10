@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">{{ resume.contact.name.first }} {{ resume.contact.name.last }}</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="" /></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ url_for('static', filename='assets/img/profile.jpg') }}" alt="" /></span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -135,7 +135,7 @@
             <!-- </section> -->
             <!-- <hr class="m-0" /> -->
             <!-- Projects -->
-            <section class="resume-section" id="awards">
+            <section class="resume-section" id="projects">
                 <div class="resume-section-content">
                   <h2 class="mb-5"><i class="fab fa-github"></i>Projects</h2>
                   <ul class="fa-ul mb-0">
@@ -155,6 +155,7 @@
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <!-- <script src="js/scripts.js"></script> -->
+	<script src="{{ url_for('static', filename='js/scripts.js') }}">
     </body>
 </html>
