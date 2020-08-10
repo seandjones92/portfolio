@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "5dfb7b98-278c-47d5-92ff-6ff38e79d35f",
+		"name": "myportfolio",
+		"description": "api for my portfolio app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resume",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "get my resume in json format"
+			},
+			"response": []
+		},
+		{
+			"name": "mockme",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "repeat the provided message in a mocking tone"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

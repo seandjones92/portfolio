@@ -1,0 +1,127 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+	"description": "Created by Sean Jones",
+	"version": "1.0.0",
+	"title": "My APIs",
+	"contact": {
+	    "email": "sean.d.jones92@gmail.com"
+	},
+	"license": {
+	    "name": "MIT",
+	    "url": "https://opensource.org/licenses/MIT"
+	}
+    },
+    "servers": [
+	{
+	    "url": "/"
+	}
+    ],
+    "tags": [
+	{
+	    "name": "Resume",
+	    "description": "API for getting my resume"
+	}
+    ],
+    "paths": {
+	"/api/resume": {
+	    "get": {
+		"tags": [
+		    "Resume"
+		],
+		"summary": "Get my resume in json format",
+		"responses": {
+		    "200": {
+			"description": "OK",
+			"schema": {
+			    "$ref": "#/components/schemas/bookRequests"
+			}
+		    }
+		}
+	    },
+	    "post": {
+		"tags": [
+		    "Book Request"
+		],
+		"summary": "Create a new book request system",
+		"requestBody": {
+		    "description": "Book Request Post Object",
+		    "required": true,
+		    "content": {
+			"application/json": {
+			    "schema": {
+				"$ref": "#/components/schemas/bookRequestPostBody"
+			    }
+			}
+		    }
+		},
+		"produces": [
+		    "application/json"
+		],
+		"responses": {
+		    "201": {
+			"description": "OK",
+			"schema": {
+			    "$ref": "#/components/schemas/id"
+			}
+		    },
+		    "400": {
+			"description": "Failed. Bad post data."
+		    }
+		}
+	    }
+	},
+    },
+    "components": {
+	"schemas": {
+	    "id": {
+		"properties": {
+		    "uuid": {
+			"type": "string"
+		    }
+		}
+	    },
+	    "bookRequestPostBody": {
+		"type": "object",
+		"properties": {
+		    "title": {
+			"type": "string",
+			"format": "string"
+		    },
+		    "email": {
+			"type": "string",
+			"format": "email"
+		    }
+		}
+	    },
+	    "bookRequest": {
+		"type": "object",
+		"properties": {
+		    "title": {
+			"type": "string",
+			"format": "string"
+		    },
+		    "email": {
+			"type": "string",
+			"format": "email"
+		    },
+		    "timestamp": {
+			"type": "string",
+			"format": "number"
+		    }
+		}
+	    },
+	    "bookRequests": {
+		"type": "object",
+		"properties": {
+		    "bookRequest": {
+			"type": "object",
+			"additionalProperties": {
+			    "$ref": "#/components/schemas/bookRequest"
+			}
+		    }
+		}
+	    },
+	}
+    }
+}
