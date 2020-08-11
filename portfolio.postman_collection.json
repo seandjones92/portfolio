@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5dfb7b98-278c-47d5-92ff-6ff38e79d35f",
+		"_postman_id": "9d490158-a214-439d-beae-83f0c715f319",
 		"name": "myportfolio",
 		"description": "api for my portfolio app",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -72,6 +72,60 @@
 					]
 				},
 				"description": "repeat the provided message in a mocking tone"
+			},
+			"response": []
+		},
+		{
+			"name": "roll",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dicenumber\": 1,\n    \"dicesides\": 20,\n    \"rollmodifier\": 0\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/api/roll",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"roll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "emacs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}:{{port}}/api/emacs?private=true",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"emacs"
+					],
+					"query": [
+						{
+							"key": "private",
+							"value": "true"
+						}
+					]
+				}
 			},
 			"response": []
 		}

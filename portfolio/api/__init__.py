@@ -16,12 +16,11 @@ def healthcheck():
 @siteapi.route('/resume')
 def resume():
     app.logger.info('resume requested')
-    with app.open_resource('static/resume.json') as resumefile:
+    with app.open_resource('static/assets/json/resume.json') as resumefile:
         resume = resumefile.read()
     return Response(resume, status=200)
 
 
-# curl -X POST localhost:5000/api/mockme -d '{"message": "why would you do this?"}' -H 'Content-Type: application/json'
 @siteapi.route('/mockme', methods=['POST'])
 def mockme():
     output_text = ""
@@ -35,3 +34,36 @@ def mockme():
         else:
             output_text += char
     return output_text
+
+
+@siteapi.route('/roll', methods=['POST'])
+def diceroll():
+    rollednumber = 0
+    dicenumber = int(request.json.get('dicenumber'))
+    dicesides = int(request.json.get('dicesides'))
+    rollmodifier = int(request.json.get('rollmodifier'))
+    for x in range(dicenumber):
+        rollednumber += random.randint(0, dicesides)
+    rolltotal = rollednumber + rollmodifier
+    rollresults = {
+        "diceNumber": dicenumber,
+        "diceSides": dicesides,
+        "rollModifier": rollmodifier,
+        "rolledNumber": rollednumber,
+        "rollTotal": rolltotal
+    }
+    return rollresults
+
+
+@siteapi.route('/emacs', methods=['GET'])
+def emacsinstaller():
+    isprivate = request.args.get('private')
+    if isprivate == 'true':
+        with app.open_resource(
+                'static/assets/scripts/emacsprivate.sh') as emacsfile:
+            emacsscript = emacsfile.read()
+    else:
+        with app.open_resource(
+                'static/assets/scripts/emacspublic.sh') as emacsfile:
+            emacsscript = emacsfile.read()
+    return Response(emacsscript, status=200)
