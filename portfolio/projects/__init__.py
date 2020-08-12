@@ -16,6 +16,7 @@ def mockmefrontend():
     form = mockingForm(request.form)
     mockmeapi = request.host_url + url_for('siteapi.mockme')
     userstext = ""
+    userstextresponse = ""
     if request.method == 'POST':
         userstext = form.textToMockify.data
         userstextjson = {'message': userstext}
