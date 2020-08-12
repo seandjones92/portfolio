@@ -15,6 +15,7 @@ flask = "*"
 requests = "*"
 gunicorn = "*"
 flask-swagger-ui = "*"
+wtforms = "*"
 
 [requires]
 python_version = "3.8"

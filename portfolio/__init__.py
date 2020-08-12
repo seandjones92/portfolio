@@ -2,7 +2,7 @@
 
 from flask import Flask
 from flask_swagger_ui import get_swaggerui_blueprint
-from portfolio import api, gui
+from portfolio import api, gui, projects
 import logging
 
 SWAGGER_URL = '/api-docs'
@@ -16,6 +16,7 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.register_blueprint(api.siteapi)
     app.register_blueprint(gui.sitegui)
+    app.register_blueprint(projects.siteprojects)
     app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 
     return app
