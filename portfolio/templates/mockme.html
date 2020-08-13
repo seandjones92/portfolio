@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  </head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MockMe</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> </head>
   <script>
     function copyToClipboard() {
 	/* Get the text field */
@@ -15,20 +21,53 @@
 	/* Copy the text inside the text field */
 	document.execCommand("copy");
     }
-  </script> 
-  <body>
-    <h1>{{ pagecontent.pagetitle }}</h1>
-    {% from "_formhelpers.html" import render_field %}
+  </script>
+  <style>
+    :root {
+	--mdc-theme-primary: #212121;
+    }
+    header {
+	text-align: center;
+    }
+    form {
+	text-align: center;
+    }
+    body {
+	text-align: center;
+    }
+    textarea {
+	box-sizing: border-box;
+    }
+  </style>  
+  <header class="mdc-typography">
+    <h3 class="mdc-typography--headline3">MOCKME</h3>
+  </header>
+  <body class="mdc-typography">
     <form method=post>
       <dl>
-	{{ render_field(form.textToMockify) }}
+	<div class="mdc-text-field mdc-text-field--outlined">
+	  {{ form.textToMockify(class="mdc-text-field__input") }}
+	  <div class="mdc-notched-outline mdc-notched-outline--no-label">
+	    <div class="mdc-notched-outline__leading"></div>
+	    <div class="mdc-notched-outline__notch">
+	      <label for="text-field-hero-input" class="mdc-floating-label"></label>
+	    </div>
+	    <div class="mdc-notched-outline__trailing"></div>
+	  </div>
+	</div>
       </dl>
-      <p><input type=submit value="mock it">
+      <button class="mdc-button foo-button" onclick="copyToClipboard()">
+	<div class="mdc-button__ripple"></div>
+	<span class="mdc-button__label"><u>Mock it</u></span>
+      </button>
     </form>
-    <p><b>{{ pagecontent.mockedtext }}</b></p>
+    <button class="mdc-button foo-button" onclick="copyToClipboard()">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label"><u>Copy Text</u></span>
+    </button>
+    <p><b class="mdc-typography--body1">{{ pagecontent.mockedtext }}</b></p>
     <div style="opacity:0">
       <input type="text" value="{{ pagecontent.mockedtext }}" id="mockedtext">
     </div>
-    <button onclick="copyToClipboard()">Copy text</button>
   </body>
 </html>

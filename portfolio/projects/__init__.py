@@ -20,5 +20,5 @@ def mockmefrontend():
         userstext = form.textToMockify.data
         userstextjson = {'message': userstext}
         userstextresponse = requests.post(mockmeapi, json=userstextjson).text
-    pagecontent = {'pagetitle': 'mOcKmE', 'mockedtext': userstextresponse}
+    pagecontent = {'mockedtext': userstextresponse}
     return render_template('mockme.html', pagecontent=pagecontent, form=form)
