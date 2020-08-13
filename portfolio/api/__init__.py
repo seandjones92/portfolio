@@ -67,11 +67,3 @@ def emacsinstaller():
                 'static/assets/scripts/emacspublic.sh') as emacsfile:
             emacsscript = emacsfile.read()
     return Response(emacsscript, status=200)
-
-
-@siteapi.before_request
-def before_request():
-    if request.url.startswith('http://'):
-        url = request.url.replace('http://', 'https://', 1)
-        code = 308
-        return redirect(url, code=code)
