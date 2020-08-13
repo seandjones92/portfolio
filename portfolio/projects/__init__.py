@@ -14,8 +14,7 @@ class mockingForm(Form):
 @siteprojects.route('/mockme', methods=['GET', 'POST'])
 def mockmefrontend():
     form = mockingForm(request.form)
-    mockmeapi = request.host_url + url_for('siteapi.mockme')
-    userstext = ""
+    mockmeapi = url_for('siteapi.mockme', _scheme='https', _external=True)
     userstextresponse = ""
     if request.method == 'POST':
         userstext = form.textToMockify.data

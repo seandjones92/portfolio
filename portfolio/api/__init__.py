@@ -33,7 +33,7 @@ def mockme():
                 output_text += char.lower()
         else:
             output_text += char
-            return output_text
+    return output_text
 
 
 @siteapi.route('/roll', methods=['POST'])
