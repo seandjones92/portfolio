@@ -9,6 +9,7 @@ rope = "*"
 autopep8 = "*"
 bpython = "*"
 flake8 = "*"
+pyopenssl = "*"
 
 [packages]
 flask = "*"
