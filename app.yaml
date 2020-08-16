@@ -1,0 +1,7 @@
+runtime: python37
+
+entrypoint: gunicorn -w 3 -b :$PORT portfolio:app
+
+handlers:
+- url: /.*
+  script: auto

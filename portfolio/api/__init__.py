@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 
-from flask import (Blueprint, Response, current_app, request, redirect)
+from flask import (Blueprint, Response, current_app, request)
+from flask_swagger_ui import get_swaggerui_blueprint
 import random
+
+swaggerurl = '/api-docs'
+apiurl = '/static/assets/json/swagger.json'
+swaggerblueprint = get_swaggerui_blueprint(swaggerurl,
+                                           apiurl,
+                                           config={'app_name': 'My APIs'})
 
 app = current_app
 siteapi = Blueprint('siteapi', __name__, url_prefix='/api')
@@ -9,20 +16,13 @@ siteapi = Blueprint('siteapi', __name__, url_prefix='/api')
 
 @siteapi.route('/healthcheck')
 def healthcheck():
-    app.logger.info('healthcheck successfully pinged')
+    app.logger.info("Resource requested: " + request.url)
     return Response(status=204)
-
-
-@siteapi.route('/resume')
-def resume():
-    app.logger.info('resume requested')
-    with app.open_resource('static/assets/json/resume.json') as resumefile:
-        resume = resumefile.read()
-    return Response(resume, status=200)
 
 
 @siteapi.route('/mockme', methods=['POST'])
 def mockme():
+    app.logger.info("Resource requested: " + request.url)
     output_text = ""
     input_text = str(request.json.get('message'))
     for char in input_text:
@@ -38,6 +38,7 @@ def mockme():
 
 @siteapi.route('/roll', methods=['POST'])
 def diceroll():
+    app.logger.info("Resource requested: " + request.url)
     rollednumber = 0
     dicenumber = int(request.json.get('dicenumber'))
     dicesides = int(request.json.get('dicesides'))
@@ -53,17 +54,3 @@ def diceroll():
         "rollTotal": rolltotal
     }
     return rollresults
-
-
-@siteapi.route('/emacs', methods=['GET'])
-def emacsinstaller():
-    isprivate = request.args.get('private')
-    if isprivate == 'true':
-        with app.open_resource(
-                'static/assets/scripts/emacsprivate.sh') as emacsfile:
-            emacsscript = emacsfile.read()
-    else:
-        with app.open_resource(
-                'static/assets/scripts/emacspublic.sh') as emacsfile:
-            emacsscript = emacsfile.read()
-    return Response(emacsscript, status=200)

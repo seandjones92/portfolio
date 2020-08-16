@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block title %}Sean's Portfolio{% endblock %}
+
+{% block content %}
+<div class="mdl-grid" style="text-align:center;">
+  <div class="mdl-cell mdl-cell--12-col">
+    <h6>This is my portfolio of apps. Take a look around and let me know what you think!</h6>
+  </div>
+</div>
+
+<div class="mdl-grid">
+
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--5-col-phone">
+    
+    <div class="mockme-card mdl-card mdl-shadow--4dp">
+      <div class="mdl-card__title">
+	<h2 class="mdl-card__title-text">MockMe</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+	This project helps you say "supEr SeriOus THIngs tHat SHOuLd be TakeN Super SerioUSLY"
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+	<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/mockme">
+	  Check it out
+	</a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
