@@ -10,6 +10,12 @@
     padding: 5px;
   }
 
+  .mockmedescription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   h4 {
     display: flex;
     justify-content: center;
@@ -37,6 +43,26 @@
 {% block title %}MockMe{% endblock %}
 
 {% block content %}
+<div class="mdl-grid">
+  <div class="mockmedescription mdl-cell mdl-cell--12-col">
+    <p>
+      Enter text into the field below then hit the "MOCK TEXT" button
+    </p>
+  </div>
+</div>
+
+<div class="mdl-grid">
+  <div class="mockmedescription mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
+    something serious
+  </div>
+  <i class="mockmedescription material-icons mdl-cell mdl-cell--4-col mdl-cell--hide-phone mdl-cell--hide-tablet">keyboard_arrow_right</i>
+  <i class="mockmedescription material-icons mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--hide-desktop">keyboard_arrow_down</i>
+  <div class="mockmedescription mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
+    SoMeTHINg sERiOUs
+  </div>
+</div>
+
+
 <form method=post>
 
   <!-- Text entry -->
