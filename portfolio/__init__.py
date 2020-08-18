@@ -10,7 +10,6 @@ def create_app():
     app.register_blueprint(api.siteapi)
     app.register_blueprint(api.swaggerblueprint, url_prefix=api.swaggerurl)
     app.register_blueprint(gui.sitegui)
-    app.register_blueprint(gui.siteprojects)
 
     return app
 

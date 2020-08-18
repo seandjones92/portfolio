@@ -12,7 +12,10 @@ sitegui = Blueprint('sitegui', __name__)
 @sitegui.route('/')
 def homepage():
     app.logger.info("Resource requested: " + request.url)
-    return render_template('home.html')
+    projectfeedapi = url_for('siteapi.projectfeed', _scheme='https', _external=True)
+    # projectfeedapi = url_for('siteapi.projectfeed', _scheme='http', _external=True)
+    projectfeed = requests.get(projectfeedapi).json()
+    return render_template('home.html', projectfeed=projectfeed)
 
 
 @sitegui.route('/about')
@@ -42,26 +45,12 @@ def mockme():
         userstextresponse = requests.post(mockmeapi, json=userstextjson).text
         app.logger.info("POST Successful")
 
-    pagecontent = {'mockedtext': userstextresponse}
-
     if userstextresponse is None:
         form.textToMockify.data = ""
     else:
         form.textToMockify.data = userstextresponse
 
-    return render_template('mockme.html', pagecontent=pagecontent, form=form)
-
-
-# deprecate this redirect eventually
-siteprojects = Blueprint('siteprojects', __name__, url_prefix='/projects')
-
-
-@siteprojects.route('/mockme', methods=['GET', 'POST'])
-def mockmefrontend():
-    return redirect(url_for('sitegui.mockme'), code=307)
-
-
-# end of redirect
+    return render_template('mockme.html', mockedtext=userstextresponse, form=form)
 
 
 @sitegui.route('/rolldice')

@@ -20,6 +20,12 @@ def healthcheck():
     return Response(status=204)
 
 
+@siteapi.route('/projectfeed')
+def projectfeed():
+    app.logger.info("Resource requested: " + request.url)
+    return app.send_static_file('assets/json/projectfeed.json')
+
+
 @siteapi.route('/mockme', methods=['POST'])
 def mockme():
     app.logger.info("Resource requested: " + request.url)
