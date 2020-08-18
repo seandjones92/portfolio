@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 
+{% block stylesheet %}
+<style>
+  pre#mockmeShell {
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: #263238;
+    white-space: nowrap;
+    padding: 5px;
+  }
+</style>
+{% endblock %}
+
 {% block javascript %}
 <script>
   function copyToClipboard() {
     /* Get the text field */
-    var copyText = document.getElementById("mockedtext");
+    var copyText = document.getElementById("textToMockify");
 
     /* Select the text field */
     copyText.select();
@@ -60,7 +72,28 @@
 
     </div>
   </div>
-</form>
 
-<p style="display: none;" id="mockedtext">{{ mockedtext }}</p>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--hide-tablet mdl-cell--hide-phone">
+
+      <p>
+        This shell function should work with both Bash and ZSH to provide the same functionality you get here but in
+        your terminal!<br>Once you've added the function below into your shell just run
+        <code>mockme "whatever text you want"</code>.
+      </p>
+
+      <pre id="mockmeShell">
+      <code>mockme() { curl -s -w '' -X POST https://seanjones.app/api/mockme -H "Content-type: application/json" -d '{"message": "'${1}'"}'}</code>
+      </pre>
+
+      <p>
+        Copy the function into your terminal and press enter to test the function or put it in your
+        <code>~/.bashrc</code> / <code>~/.zshrc</code> to have it available whenever you open your terminal.
+      </p>
+
+    </div>
+  </div>
+
+
+</form>
 {% endblock %}
