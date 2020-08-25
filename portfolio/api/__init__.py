@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-from flask import (Blueprint, Response, current_app, request)
-from flask_swagger_ui import get_swaggerui_blueprint
 import random
+
+from flask import Blueprint, Response, current_app, request
+from flask_swagger_ui import get_swaggerui_blueprint
 
 swaggerurl = '/api-docs'
 apiurl = '/static/assets/json/swagger.json'
@@ -42,21 +43,14 @@ def mockme():
     return output_text
 
 
-@siteapi.route('/roll', methods=['POST'])
-def diceroll():
+@siteapi.route('/rolldice', methods=['GET'])
+def rolldice():
     app.logger.info("Resource requested: " + request.url)
     rollednumber = 0
-    dicenumber = int(request.json.get('dicenumber'))
-    dicesides = int(request.json.get('dicesides'))
-    rollmodifier = int(request.json.get('rollmodifier'))
+    dicenumber = int(request.args.get('dicenumber'))
+    app.logger.debug('Number of dice in request: ' + str(dicenumber))
+    dicesides = int(request.args.get('dicesides'))
+    app.logger.debug('Number of sides on each die: ' + str(dicesides))
     for x in range(dicenumber):
-        rollednumber += random.randint(0, dicesides)
-    rolltotal = rollednumber + rollmodifier
-    rollresults = {
-        "diceNumber": dicenumber,
-        "diceSides": dicesides,
-        "rollModifier": rollmodifier,
-        "rolledNumber": rollednumber,
-        "rollTotal": rolltotal
-    }
-    return rollresults
+        rollednumber += random.randint(1, dicesides)
+    return str(rollednumber)

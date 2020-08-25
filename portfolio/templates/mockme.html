@@ -1,133 +1,60 @@
 {% extends 'base.html' %}
 
-{% block stylesheet %}
-<style>
-  pre#mockmeShell {
-    overflow-x: auto;
-    overflow-y: hidden;
-    background-color: #263238;
-    white-space: nowrap;
-    padding: 5px;
-  }
-
-  .mockmedescription {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  h4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
-{% endblock %}
-
 {% block javascript %}
 <script>
-  function copyToClipboard() {
-    /* Get the text field */
-    var copyText = document.getElementById("textToMockify");
+    function copyToClipboard() {
+        /* Get the text field */
+        var copyText = document.getElementById("textToMockify");
 
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-  }
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    }
 </script>
 {% endblock %}
 
 {% block title %}MockMe{% endblock %}
 
+{% block description %}
+This will turn "some of your text" into "sOmE OF youR tExT"
+{% endblock %}
+
 {% block content %}
-<div class="mdl-grid">
-  <div class="mockmedescription mdl-cell mdl-cell--12-col">
+<div class="container">
+    <form method="POST">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 form-group">
+                {{ form.textToMockify(class="form-control") }}
+                <small id="texthelp" class="form-text text-muted">the text you wanna mock goes here</small>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 form-group">
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="copyToClipboard()">Copy</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container d-none d-md-block">
+    <h4>Use this on the terminal</h4>
+
     <p>
-      Enter text into the field below then hit the "MOCK TEXT" button
-    </p>
-  </div>
-</div>
-
-<div class="mdl-grid">
-  <div class="mockmedescription mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
-    something serious
-  </div>
-  <i class="mockmedescription material-icons mdl-cell mdl-cell--4-col mdl-cell--hide-phone mdl-cell--hide-tablet">keyboard_arrow_right</i>
-  <i class="mockmedescription material-icons mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--hide-desktop">keyboard_arrow_down</i>
-  <div class="mockmedescription mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
-    SoMeTHINg sERiOUs
-  </div>
-</div>
-
-
-<form method=post>
-
-  <!-- Text entry -->
-  <div class="mdl-grid">
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-      {{ form.textToMockify(class="mdl-textfield__input") }}
-      <label class="mdl-textfield__label" for="textToMockify">Your text here...</label>
-    </div>
-  </div>
-
-  <div class="mdl-grid" style="text-align:center;">
-
-    <!-- Mocking button -->
-    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-        Mock Text
-      </button>
-    </div>
-
-    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-
-      <!-- Copy on click button -->
-      <button onclick="copyToClipboard()" id="show-toast"
-        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button">Copy Text</button>
-      <div id="copy-button-toast" class="mdl-js-snackbar mdl-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button class="mdl-snackbar__action" type="button"></button>
-      </div>
-      <script>
-        (function () {
-          var snackbarContainer = document.querySelector('#copy-button-toast');
-          var showToastButton = document.querySelector('#show-toast');
-          showToastButton.addEventListener('click', function () {
-            var data = { message: 'Copied to clipboard' };
-            snackbarContainer.MaterialSnackbar.showSnackbar(data);
-          });
-        }());
-      </script>
-
-    </div>
-  </div>
-
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--hide-tablet mdl-cell--hide-phone">
-
-      <h4>Use this on the terminal</h4>
-
-      <p>
         This shell function should work with both Bash and ZSH to provide the same functionality you get here but in
-        your terminal!<br>Once you've added the function below into your shell just run
-        <code>mockme "whatever text you want"</code>.
-      </p>
+        your terminal! Once you've added the function below into your shell just run:<br>
+        <code>$ mockme "whatever text you want"</code>.
+    </p>
 
-      <pre id="mockmeShell">
-      <code>mockme() { curl -s -w '' -X POST https://seanjones.app/api/mockme -H "Content-type: application/json" -d '{"message": "'${1}'"}'}</code>
-      </pre>
+    <pre id="mockmeShell">
+<code>mockme() { curl -s -w '' -X POST https://seanjones.app/api/mockme -H "Content-type: application/json" -d '{"message": "'${1}'"}'}</code>
+    </pre>
 
-      <p>
+    <p>
         Copy the function into your terminal and press enter to test the function or put it in your
-        <code>~/.bashrc</code> / <code>~/.zshrc</code> to have it available whenever you open your terminal.
-      </p>
-
-    </div>
-  </div>
-
-
-</form>
+        <code>~/.bashrc</code> or <code>~/.zshrc</code> to have it available whenever you open your terminal.
+    </p>
+</div>
 {% endblock %}

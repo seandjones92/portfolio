@@ -3,7 +3,12 @@
         {
             "name": "MockMe",
             "link": "/mockme",
-            "description": "Turn any text input into a sarcastic mess.<br>IN: Something super serious<br>OUT: sOmeTHiNg SuPeR sERioUS"
+            "description": "Turn any text input into a sarcastic mess"
+        },
+        {
+            "name": "Roll Dice",
+            "link": "/rolldice",
+            "description": "Roll any number of any sided die and get the results"
         }
     ]
 }

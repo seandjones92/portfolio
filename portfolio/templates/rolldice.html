@@ -2,6 +2,27 @@
 
 {% block title %}Roll Dice{% endblock %}
 
+{% block description %}
+Use the form to determine how many dice to roll and how many sides each die should have
+{% endblock %}
+
 {% block content %}
-Dice rolling app will go here
+<div class="container">
+    Outcome of dice roll: {{ rollednumber }}
+</div>
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="form-group col-md">
+                <label for="dicenumber">Number of dice</label>
+                {{ form.dicenumber(class="form-control") }}
+            </div>
+            <div class="form-group col-md">
+                <label for="dicesides">Sides of dice</label>
+                {{ form.dicesides(class="form-control") }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Roll</button>
+    </form>
+</div>
 {% endblock %}
