@@ -85,3 +85,8 @@ def rolldice():
     form.dicesides.data = dicesides
 
     return render_template('rolldice.html', form=form, rollednumber=rollednumber)
+
+
+@sitegui.route('/howistoday')
+def howistoday():
+    return render_template('howistoday.html')
