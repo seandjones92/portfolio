@@ -23,38 +23,10 @@ This will turn "some of your text" into "sOmE OF youR tExT"
 {% endblock %}
 
 {% block content %}
-<div>
-    <form method="POST">
-        <div>
-            <div>
-                {{ form.textToMockify }}
-                <small id="texthelp">the text you wanna mock goes here</small>
-            </div>
-            <div>
-                <div role="group">
-                    <button type="submit">Submit</button>
-                    <button type="button" onclick="copyToClipboard()">Copy</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-<div>
-    <h4>Use this on the terminal</h4>
-
-    <p>
-        This shell function should work with both Bash and ZSH to provide the same functionality you get here but in
-        your terminal! Once you've added the function below into your shell just run:<br>
-        <code>$ mockme "whatever text you want"</code>.
-    </p>
-
-    <pre id="mockmeShell">
-<code>mockme() { curl -s -w '' -X POST https://seanjones.app/api/mockme -H "Content-type: application/json" -d '{"message": "'${1}'"}'}</code>
-    </pre>
-
-    <p>
-        Copy the function into your terminal and press enter to test the function or put it in your
-        <code>~/.bashrc</code> or <code>~/.zshrc</code> to have it available whenever you open your terminal.
-    </p>
-</div>
+<form method="POST">
+    {{ form.textToMockify }}
+    <small id="texthelp">the text you wanna mock goes here</small>
+    <button type="submit">Submit</button>
+    <button type="button" onclick="copyToClipboard()">Copy</button>
+</form>
 {% endblock %}

@@ -16,14 +16,12 @@
   <a id="home" href="/">Sean's Projects</a>
   <a id="about" href="/about">About</a>
 
-  <div>
-    <h1>
-      {% block title %}{% endblock %}
-    </h1>
-    <p>
-      {% block description %}{% endblock %}
-    </p>
-  </div>
+  <h1>
+    {% block title %}{% endblock %}
+  </h1>
+  <p>
+    {% block description %}{% endblock %}
+  </p>
 
   {% block content %}
   {% endblock %}
