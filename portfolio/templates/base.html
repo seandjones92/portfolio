@@ -2,71 +2,27 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-  <!-- Bootstrap -->
   <title>Projects</title>
-  <style>
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: #343a40;
-        color: #ffffff;
-      }
-      pre {
-        color:#ffffff;
-      }
-      .list-group-item {
-        background: #343434;
-      }
-    }
-
-    .sitedescription {
-      padding-top: 50px;
-      min-height: 30vh;
-    }
-  </style>
   {% block stylesheet %}
-  {% endblock %}
-  {% block javascript %}
   {% endblock %}
 </head>
 
 <body>
 
-  <div class="container-fluid bg-dark text-white">
-    <nav class="container navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Sean's Projects</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0"> -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
-        </ul>
-      </div>
+  <div>
+    <nav>
+      <a href="/">Sean's Projects</a>
+      <a href="/about">About</a>
     </nav>
   </div>
 
-  <div class="sitedescription container-fluid">
-    <h1 class="container text-center">
+  <div>
+    <h1>
       {% block title %}{% endblock %}
     </h1>
-    <p class="container text-center">
+    <p>
       {% block description %}{% endblock %}
     </p>
   </div>
@@ -74,17 +30,8 @@
   {% block content %}
   {% endblock %}
 
-  <!-- Optional Bootstrap JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"></script>
-  <!-- Bootstrap -->
+  {% block javascript %}
+  {% endblock %}
 </body>
 
 </html>
