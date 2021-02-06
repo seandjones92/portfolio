@@ -5,18 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Projects</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" media="(prefers-color-scheme: light)">
   {% block stylesheet %}
   {% endblock %}
 </head>
 
 <body>
 
-  <div>
-    <nav>
-      <a href="/">Sean's Projects</a>
-      <a href="/about">About</a>
-    </nav>
-  </div>
+  <a id="home" href="/">Sean's Projects</a>
+  <a id="about" href="/about">About</a>
 
   <div>
     <h1>
